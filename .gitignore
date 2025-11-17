@@ -4,6 +4,16 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# macOS
+.DS_Store
+
+# OS / Misc
+*.log
+
+# Environment / Secrets
+.env
+*.env
+
 ### STS ###
 .apt_generated
 .classpath
