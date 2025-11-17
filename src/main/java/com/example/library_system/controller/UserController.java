@@ -27,11 +27,13 @@ public class UserController {
            return ResponseEntity.noContent().build();
         }
 
-        return ResponseEntity.ok(service.getAllUsers());
+        return ResponseEntity.ok(users);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<UserResponseDTO> createUser(@Valid @RequestBody UserRequestDTO dto) {
+    @PostMapping("/add")
+    public ResponseEntity<UserResponseDTO> addUser(@Valid @RequestBody UserRequestDTO dto) {
+        UserResponseDTO response = service.addUser(dto);
 
+        return ResponseEntity.ok(response);
     }
 }

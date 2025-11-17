@@ -1,37 +1,19 @@
-package com.example.library_system.model;
+package com.example.library_system.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 
-import java.util.List;
-
-@Entity
-@Table(name = "books")
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class BookResponseDTO {
     private Long id;
-
-    @Column(nullable = false)
     private String title;
-
-    @Column(nullable = false)
     private String author;
-
-    @Column(nullable = false)
     private String isbn;
-
-    @Column(nullable = false)
     private String genre;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    private List<Loan> loans;
-
-    public Book() {
+    public BookResponseDTO() {
     }
 
-    public Book(String title, String author, String isbn, String genre) {
+    public BookResponseDTO(Long id, String title, String author, String isbn, String genre) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.isbn = isbn;
@@ -76,13 +58,5 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
-    }
-
-    public List<Loan> getLoans() {
-        return loans;
-    }
-
-    public void setLoans(List<Loan> loans) {
-        this.loans = loans;
     }
 }
